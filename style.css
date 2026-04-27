@@ -1,11 +1,9 @@
 body {
   color: #222;
   cursor: auto;
-  font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-style: normal;
   font-weight: normal;
-  line-height: 1.5;
-  background-color: rgb(101, 101, 101); /* Temporario - pode ser removido */
   margin: 0px;
 }
 
@@ -14,7 +12,6 @@ header {
   position: relative;
   top: 0;
   width: 100%;
-  z-index: 2;
   transition: 0.1s;
   background-color: #fff;
   display: block;
@@ -30,21 +27,23 @@ header {
 .logo {
   display: flex;
   gap: 30px;
-  text-align: center;
   font-size: 0;
   width: 171.62px;
   height: 30px;
 }
 
-#menu-navigation {
+.menu-navigation {
   display: flex;
   gap: 30px;
   align-items: center;
+}
+
+a {
   text-decoration: none;
-} 
+}
 
 .nav-items {
-  color: #081B2B;
+  color: #2b0808;
   font-size: 16px;
   font-weight: 600;
   line-height: 20.16px;
@@ -52,4 +51,65 @@ header {
   margin-bottom: 0;
   font-family: "Sora";
   cursor: pointer;
+}
+
+.valores {
+  max-width: 1300px;
+  display: flex;
+  gap: 10px;
+  padding: 100px 120px;
+  text-align: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #EEEAFB, #F8F6FD, #EDFAFD, #D0F2FA);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  padding: 0px 20px;
+  align-items: center;
+}
+
+.imagem {
+  width: 100%;
+  max-height: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.titulo-valores {
+  margin: 0px;
+  font-size: 22px;
+}
+
+.descricao-valores {
+  margin: 0px;
+}
+
+.informacoes {
+  display: flex;
+  text-align: center;
+  gap: 20px;
+  padding: 100px 120px;
+  max-width: 1300px;
+  word-break: break-word;
+}
+
+.div-infos {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.h1-infos {
+  font-size: 48px;
+  margin: 0px;
+}
+
+.p-infos {
+  font-size: 16px;
+  margin: 0px;
 }
