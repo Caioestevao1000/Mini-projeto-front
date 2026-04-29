@@ -33,6 +33,7 @@ header {
 }
 
 .menu-navigation {
+  margin-right: 35px;
   display: flex;
   gap: 30px;
   align-items: center;
@@ -42,7 +43,17 @@ a {
   text-decoration: none;
 }
 
-.nav-items {
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-item {
   color: #2b0808;
   font-size: 16px;
   font-weight: 600;
@@ -53,14 +64,71 @@ a {
   cursor: pointer;
 }
 
+.nav-item:hover{
+  color: rgb(67, 67, 201);
+}
+
+.btn-whats {
+  position: fixed;
+  bottom: 45%;
+  right: 20px;
+
+  background-color: rgb(61, 228, 61);
+
+  border: 4px solid #fff;
+
+  border-radius: 10px;
+  padding: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 9999;
+
+  transition: background-color 0.3s ease;
+}
+
+.btn-whats:hover{
+  background-color: rgb(40, 200, 40);
+}
+
+.btn-whats img {
+  width: 40px;
+  height: 40px;
+}
+
+.nav-item-border {
+  color: #2b0808;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.16px;
+  align-items: center;
+  margin-bottom: 0;
+  font-family: "Sora";
+  cursor: pointer;
+  border: 3px solid black;
+  padding: 8px 18px;
+  border-radius: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item-border:hover{
+  color:#fff;
+  background-color: black;
+}
+
 .valores {
   max-width: 1300px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   padding: 100px 120px;
   text-align: center;
   justify-content: space-between;
-  background: linear-gradient(90deg, #EEEAFB, #F8F6FD, #EDFAFD, #D0F2FA);
+  background: linear-gradient(90deg, #EEEAFB, #F8F6FD, #EDFAFD, #D0F2FA); 
+  margin: 0 auto;
 }
 
 .item {
@@ -69,6 +137,8 @@ a {
   row-gap: 10px;
   padding: 0px 20px;
   align-items: center;
+  max-width: 300px;
+  width: 100%;
 }
 
 .imagem {
@@ -82,11 +152,17 @@ a {
 
 .titulo-valores {
   margin: 0px;
-  font-size: 22px;
+  font-size: 20px;
+  font-family: Sora;
+  font-weight: 600;
 }
 
 .descricao-valores {
   margin: 0px;
+  font-family: Sora;
+  font-size: 14px;
+  width: 75%;
+  height: fit-content;
 }
 
 .informacoes {
@@ -96,20 +172,75 @@ a {
   padding: 100px 120px;
   max-width: 1300px;
   word-break: break-word;
+  margin: 0 auto;
 }
 
 .div-infos {
   display: flex;
   flex-direction: column;
   row-gap: 40px;
+  width: 100%;
 }
 
 .h1-infos {
   font-size: 48px;
   margin: 0px;
+  font-family: Sora;
 }
 
 .p-infos {
   font-size: 16px;
   margin: 0px;
+  font-family: Sora;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+@media (max-width: 768px) {
+.menu-icon {
+  display: block;
+  margin-right: 20px;
+}
+
+.menu-navigation {
+  display: none;
+}
+
+.informacoes {
+  flex-direction: column; 
+  padding: 60px 20px;     
+  word-break: break-word;
+  margin: 0 auto;
+}
+
+.h1-infos{
+    color: #081B2B;
+    font-family: "Sora";
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
+    text-align: center;
+    margin: 0;
+}
+
+.p-infos{
+    color: #081B2B;
+    font-family: "Sora";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+}
+
+.btn-whats {
+  bottom: 20px;
+  right: 15px;
+  padding: 10px;
+}
+
+.btn-whats img {
+  width: 50px;
+  height: 50px;
+}
 }
