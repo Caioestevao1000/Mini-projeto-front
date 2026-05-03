@@ -120,10 +120,10 @@ a {
 }
 
 .valores {
-  max-width: 1300px;
+  width: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  row-gap: 15px;
   padding: 100px 120px;
   text-align: center;
   justify-content: space-between;
@@ -196,7 +196,7 @@ a {
   padding-left: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 930px) {
 .menu-icon {
   display: block;
   margin-right: 20px;
