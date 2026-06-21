@@ -204,6 +204,136 @@ a {
   margin: 8px 0;
 }
 
+.btn-nav {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.search-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.search-input-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#input-error {
+  color: #cc0000;
+  font-size: 13px;
+  font-family: "Sora";
+  margin: 0;
+  min-height: 16px;
+}
+
+.btn-favoritar {
+  margin-top: 10px;
+  padding: 6px 16px;
+  border: 2px solid #dc7f72;
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Sora";
+  font-size: 13px;
+  color: #2b0808;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-favoritar:hover,
+.btn-favoritar.favoritado {
+  background-color: #dc7f72;
+  color: #fff;
+}
+
+.modal-favoritos {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-favoritos.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-family: "Sora";
+}
+
+#fechar-modal {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+.lista-favoritos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card-favorito {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  min-width: 140px;
+}
+
+.card-favorito img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-favorito p {
+  margin: 0;
+  font-family: "Sora";
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sem-favoritos {
+  font-family: "Sora";
+  color: #666;
+  text-align: center;
+  padding: 20px 0;
+}
+
+
 @media (max-width: 930px) {
   .menu-icon {
     display: block;
