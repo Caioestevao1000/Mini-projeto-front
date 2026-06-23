@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quem Somos</title>
-    <link rel="shortcut icon" href="img/32x32.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/formula-1.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
@@ -32,11 +32,15 @@
         </div>
 
         <nav class="menu-navigation">
-          <a class="nav-item" href="contato.html">Favoritos</a>
+          <button class="nav-item btn-nav" id="btn-favoritos">Favoritos</button>
           <label class="nav-item" for="pilot-search">Procure um piloto:</label>
-          <input type="text" id="pilot-search" name="q" />
-          <button id="search-button">Buscar</button>
-          <p id="input-error"></p>
+          <div class="search-group">
+            <div class="search-input-row">
+              <input type="text" id="pilot-search" name="q" />
+              <button id="search-button">Buscar</button>
+            </div>
+            <p id="input-error"></p>
+          </div>
         </nav>
       </div>
     </header>
@@ -48,11 +52,12 @@
             <figure class="imagem">
               <img
                 src="img/michael-schumacher.jpg"
-                alt="Imagem de Michael Schumacher "
+                alt="Imagem de Michael Schumacher"
                 class="legend-profile"
               />
             </figure>
             <h2 class="titulo-valores">Michael Schumacher</h2>
+            <button class="btn-favoritar" data-name="Michael Schumacher" data-img="img/michael-schumacher.jpg" data-alt="Imagem de Michael Schumacher">♡ Favoritar</button>
           </div>
 
           <div class="item">
@@ -64,6 +69,7 @@
               />
             </figure>
             <h2 class="titulo-valores">Ayrton Senna</h2>
+            <button class="btn-favoritar" data-name="Ayrton Senna" data-img="img/ayrton-senna.jpg" data-alt="Imagem de Ayrton Senna">♡ Favoritar</button>
           </div>
 
           <div class="item">
@@ -75,6 +81,7 @@
               />
             </figure>
             <h2 class="titulo-valores">Lewis Hamilton</h2>
+            <button class="btn-favoritar" data-name="Lewis Hamilton" data-img="img/lewis-hamilton.jpg" data-alt="Imagem de Lewis Hamilton">♡ Favoritar</button>
           </div>
         </div>
       </section>
@@ -90,8 +97,8 @@
         </div>
       </section>
     </main>
-    <a href="https://wa.me/5543999999999" target="_blank" class="btn-whats">
-      <img src="img/whatsapp-icon.png" alt="ícone whatsapp" />
+    <a href="https://openf1.org/docs" target="_blank" class="btn-flutuante">
+      <img src="img/Formula1-1000.png" alt="Logo F1" />
     </a>
     <footer class="footer">
       <h3>Créditos das imagens</h3>
@@ -115,6 +122,15 @@
     <dialog id="pilot-dialog">
       <div id="pilot-status"></div>
     </dialog>
+    <div id="modal-favoritos" class="modal-favoritos hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Pilotos Favoritos</h2>
+          <button id="fechar-modal">✕</button>
+        </div>
+        <div id="lista-favoritos" class="lista-favoritos"></div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
