@@ -22,7 +22,7 @@ Ao clicar em **Buscar**, o campo é validado exigindo no mínimo 3 caracteres. C
 
 ## Objetivos Futuros
 - Implementar a busca funcional de pilotos consumindo corretamente a API OpenF1
-- Adicionar página de favoritos (`contato.html`) com os pilotos salvos pelo usuário
+- Adicionar feature de favoritos com os pilotos salvos pelo usuário
 - Melhorar responsividade para dispositivos móveis
 
 ## Autor

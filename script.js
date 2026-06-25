@@ -1,6 +1,8 @@
 const searchButton = document.getElementById("search-button");
 const searchInput = document.getElementById("pilot-search");
 const inputError = document.getElementById("input-error");
+const pilotDialog = document.getElementById("pilot-dialog")
+const pilotContent = document.getElementById("pilot-status")
 
 // Pesquisa de pilotos
 async function searchFunction(inputValue) {
@@ -12,19 +14,48 @@ async function searchFunction(inputValue) {
   showSearchResult(pilot);
 }
 
-searchButton.addEventListener("click", function () {
-  const inputValue = searchInput.value;
+//click event -> validation -> dialog opening
+searchButton.addEventListener("click", async function(){
+    const inputValue = searchInput.value;
 
-  if (inputValue.length < 3) {
-    inputError.textContent = "Digite pelo menos 3 caracteres";
-    return;
-  }
+    if (inputValue.length < 3){
+        inputError.textContent = "Digite pelo menos 3 caracteres";
+        return;
+    }
 
-  inputError.textContent = "Buscando..";
-  searchFunction(inputValue);
-});
+    inputError.textContent = "Buscando..";
+    const pilotData = await searchFunction(inputValue);
 
+    if (!pilotData) {
+        inputError.textContent = "Piloto não encontrado";
+        return;
+    }
 
+    console.log(pilotData);
+
+    renderDialog(pilotData);
+
+    openDialog();
+})
+//rendering dialog in HTML
+function renderDialog(pilotData){
+    pilotContent.innerHTML = `
+    <img src="${pilotData.headshot_url}" alt="${pilotData.full_name}"/>
+    <h2>${pilotData.full_name}</h2>
+    <p>${pilotData.team_name}</p>
+    <button onclick="closeDialog()">Fechar</button>
+    `;
+}
+
+// function to open the dialog
+function openDialog(){
+    pilotDialog.showModal();
+}
+
+// function to close the dialog
+function closeDialog(){
+    pilotDialog.close();
+}
 // Favoritos
 const btnFavoritos = document.getElementById("btn-favoritos");
 const modalFavoritos = document.getElementById("modal-favoritos");
