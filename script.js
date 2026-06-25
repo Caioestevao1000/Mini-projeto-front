@@ -7,7 +7,9 @@ async function searchFunction(inputValue) {
   const response = await fetch("https://api.openf1.org/v1/drivers?&session_key=latest");
   const pilots = await response.json();
   const pilot = pilots.find(p => p.full_name.toLowerCase().includes(inputValue.toLowerCase()));
-  console.log(pilot);
+  inputError.textContent = "";
+  if (!pilot) { inputError.textContent = "Piloto não encontrado."; return; }
+  showSearchResult(pilot);
 }
 
 searchButton.addEventListener("click", function () {
@@ -28,6 +30,32 @@ const btnFavoritos = document.getElementById("btn-favoritos");
 const modalFavoritos = document.getElementById("modal-favoritos");
 const fecharModal = document.getElementById("fechar-modal");
 const listaFavoritos = document.getElementById("lista-favoritos");
+const modalBusca = document.getElementById("modal-busca");
+const fecharModalBusca = document.getElementById("fechar-modal-busca");
+const resultadoBusca = document.getElementById("resultado-busca");
+
+function showSearchResult(pilot) {
+  const img = pilot.headshot_url || "img/pilot-logo.png";
+  const alt = `Foto de ${pilot.full_name}`;
+  const isFav = getFavoritos().some(f => f.name === pilot.full_name);
+  resultadoBusca.innerHTML = `
+    <div class="card-favorito">
+      <img src="${img}" alt="${alt}" />
+      <p>${pilot.full_name}</p>
+      ${pilot.team_name ? `<p style="font-size:12px;color:#666;font-weight:400">${pilot.team_name}</p>` : ""}
+      <button class="btn-favoritar ${isFav ? "favoritado" : ""}" data-name="${pilot.full_name}" data-img="${img}" data-alt="${alt}">
+        ${isFav ? "♥ Favoritado" : "♡ Favoritar"}
+      </button>
+    </div>
+  `;
+  resultadoBusca.querySelector(".btn-favoritar").addEventListener("click", function () {
+    toggleFavorito(this.dataset.name, this.dataset.img, this.dataset.alt);
+    const isFav = getFavoritos().some(f => f.name === this.dataset.name);
+    this.classList.toggle("favoritado", isFav);
+    this.textContent = isFav ? "♥ Favoritado" : "♡ Favoritar";
+  });
+  modalBusca.classList.remove("hidden");
+}
 
 function getFavoritos() {
   return JSON.parse(localStorage.getItem("favoritos") || "[]");
@@ -68,8 +96,18 @@ function renderFavoritos() {
     <div class="card-favorito">
       <img src="${f.img}" alt="${f.alt}" />
       <p>${f.name}</p>
+      <button class="btn-remover-favorito" data-name="${f.name}">✕ Remover</button>
     </div>
   `).join("");
+  listaFavoritos.querySelectorAll(".btn-remover-favorito").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const favs = getFavoritos();
+      favs.splice(favs.findIndex(f => f.name === btn.dataset.name), 1);
+      saveFavoritos(favs);
+      updateBtnsFavoritar();
+      renderFavoritos();
+    });
+  });
 }
 
 btnFavoritos.addEventListener("click", () => {
@@ -86,6 +124,9 @@ modalFavoritos.addEventListener("click", (e) => {
     modalFavoritos.classList.add("hidden");
   }
 });
+
+fecharModalBusca.addEventListener("click", () => modalBusca.classList.add("hidden"));
+modalBusca.addEventListener("click", (e) => { if (e.target === modalBusca) modalBusca.classList.add("hidden"); });
 
 document.querySelectorAll(".btn-favoritar").forEach(btn => {
   btn.addEventListener("click", () => {

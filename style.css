@@ -333,6 +333,32 @@ a {
   padding: 20px 0;
 }
 
+.btn-remover-favorito {
+  margin-top: 4px;
+  padding: 5px 14px;
+  border: 2px solid #cc0000;
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Sora";
+  font-size: 12px;
+  color: #cc0000;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-remover-favorito:hover {
+  background-color: #cc0000;
+  color: #fff;
+}
+
+#fechar-modal-busca {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
 
 @media (max-width: 930px) {
   .menu-icon {
