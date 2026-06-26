@@ -32,11 +32,10 @@ searchButton.addEventListener("click", async function(){
     }
 
     console.log(pilotData);
-
     renderDialog(pilotData);
-
     openDialog();
 })
+
 //rendering dialog in HTML
 function renderDialog(pilotData){
     pilotContent.innerHTML = `
@@ -56,6 +55,7 @@ function openDialog(){
 function closeDialog(){
     pilotDialog.close();
 }
+
 // Favoritos
 const btnFavoritos = document.getElementById("btn-favoritos");
 const modalFavoritos = document.getElementById("modal-favoritos");
@@ -69,6 +69,7 @@ function showSearchResult(pilot) {
   const img = pilot.headshot_url || "img/pilot-logo.png";
   const alt = `Foto de ${pilot.full_name}`;
   const isFav = getFavoritos().some(f => f.name === pilot.full_name);
+
   resultadoBusca.innerHTML = `
     <div class="card-favorito">
       <img src="${img}" alt="${alt}" />
@@ -79,6 +80,7 @@ function showSearchResult(pilot) {
       </button>
     </div>
   `;
+
   resultadoBusca.querySelector(".btn-favoritar").addEventListener("click", function () {
     toggleFavorito(this.dataset.name, this.dataset.img, this.dataset.alt);
     const isFav = getFavoritos().some(f => f.name === this.dataset.name);
@@ -156,8 +158,14 @@ modalFavoritos.addEventListener("click", (e) => {
   }
 });
 
-fecharModalBusca.addEventListener("click", () => modalBusca.classList.add("hidden"));
-modalBusca.addEventListener("click", (e) => { if (e.target === modalBusca) modalBusca.classList.add("hidden"); });
+fecharModalBusca.addEventListener("click", () => 
+  modalBusca.classList.add("hidden")
+);
+
+modalBusca.addEventListener("click", (e) => {
+  if (e.target === modalBusca) 
+    modalBusca.classList.add("hidden"); 
+  });
 
 document.querySelectorAll(".btn-favoritar").forEach(btn => {
   btn.addEventListener("click", () => {
