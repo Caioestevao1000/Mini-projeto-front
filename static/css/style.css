@@ -38,7 +38,7 @@ header {
 .menu-navigation {
   margin-right: 35px;
   display: flex;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -286,7 +286,7 @@ a {
   font-family: "Sora";
 }
 
-#fechar-modal {
+.btn-fechar {
   background: none;
   border: none;
   font-size: 20px;
@@ -351,12 +351,54 @@ a {
   color: #fff;
 }
 
-#fechar-modal-busca {
-  background: none;
-  border: none;
-  font-size: 20px;
+/* ---- Itens novos: perfil, paginação, usuários ---- */
+.perfil-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.perfil-select {
+  font-family: "Sora";
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.card-detalhe {
+  font-size: 12px !important;
+  color: #666;
+  font-weight: 400 !important;
+}
+
+.perfil-bio {
+  font-family: "Sora";
+  color: #444;
+  margin: -12px 0 20px;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  font-family: "Sora";
+  font-size: 14px;
+}
+
+.paginacao button {
+  padding: 6px 14px;
+  border: 2px solid #dc7f72;
+  border-radius: 20px;
+  background: transparent;
   cursor: pointer;
-  color: #555;
+  font-family: "Sora";
+}
+
+.paginacao button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilotos de F1</title>
+    <link rel="shortcut icon" href="/static/img/formula-1.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container-header">
+        <div class="logo">
+          <a href="/">
+            <figure>
+              <img src="/static/img/pilot-logo.png" alt="Pilot" loading="lazy" class="logo-image" />
+            </figure>
+          </a>
+        </div>
+
+        <div class="menu-icon">
+          <img src="/static/img/menu.png" alt="menu" />
+        </div>
+
+        <nav class="menu-navigation">
+          <div class="perfil-group">
+            <label class="nav-item" for="perfil-ativo">Perfil:</label>
+            <select id="perfil-ativo" class="perfil-select"></select>
+          </div>
+          <button class="nav-item btn-nav" id="btn-favoritos">Favoritos</button>
+
+          <label class="nav-item" for="pilot-search">Procure um piloto:</label>
+          <div class="search-group">
+            <div class="search-input-row">
+              <input type="text" id="pilot-search" name="q" placeholder="nome, país ou equipe" />
+              <button id="search-button">Buscar</button>
+            </div>
+            <p id="input-error"></p>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <!-- Preenchido pelo script.js com GET /api/pilotos/destaques -->
+        <div class="valores" id="destaques"></div>
+      </section>
+
+      <section class="informacoes">
+        <div class="div-infos">
+          <h1 class="h1-infos">
+            A Fórmula 1 reúne gerações de talentos que fizeram história nas pistas. Conheça alguns dos pilotos que marcaram e ainda marcam o esporte.
+          </h1>
+          <p class="p-infos">
+            Com foco na paixão pelo automobilismo, esta página reúne pilotos que representam a Fórmula 1, destacando talento, velocidade e superação. Aqui você pode conhecer alguns dos nomes que marcaram e continuam marcando a história do esporte nas pistas.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <a href="https://www.formula1.com/" target="_blank" class="btn-flutuante">
+      <img src="/static/img/Formula1-1000.png" alt="Logo F1" />
+    </a>
+
+    <footer class="footer">
+      <h3>Créditos das imagens</h3>
+      <ul>
+        <li>Michael Schumacher — Foto: Nicolas Bachmann/F1fans via Wikimedia Commons (CC BY-SA 4.0)</li>
+        <li>Ayrton Senna — Foto: Instituto Ayrton Senna via Wikimedia Commons (CC BY 2.0)</li>
+        <li>Lewis Hamilton — Foto: Gerardo Lazzari via Wikimedia Commons (CC BY 2.0)</li>
+      </ul>
+    </footer>
+
+    <!-- Modal: resultado da busca de pilotos (paginado) -->
+    <div id="modal-busca" class="modal-favoritos hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Resultado da Busca</h2>
+          <button class="btn-fechar" data-fechar="modal-busca">✕</button>
+        </div>
+        <div id="resultado-busca" class="lista-favoritos"></div>
+        <div id="paginacao-busca" class="paginacao"></div>
+      </div>
+    </div>
+
+    <!-- Modal: página de perfil (dados do usuário + pilotos favoritos) -->
+    <div id="modal-perfil" class="modal-favoritos hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="perfil-titulo">Perfil</h2>
+          <button class="btn-fechar" data-fechar="modal-perfil">✕</button>
+        </div>
+        <p id="perfil-bio" class="perfil-bio"></p>
+        <div id="perfil-favoritos" class="lista-favoritos"></div>
+      </div>
+    </div>
+
+    <script src="/static/javascript/script.js"></script>
+  </body>
+</html>

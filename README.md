@@ -1,31 +1,65 @@
-# Mini-projeto-front
-Trabalho de faculdade de Replicação de Site e Uso de API - Front-end
+# API de Pilotos de F1
 
-## Sobre o Projeto
-O projeto consiste em uma página web temática de Fórmula 1, exibindo pilotos que marcaram a história do esporte. A página apresenta perfis de **Michael Schumacher**, **Ayrton Senna** e **Lewis Hamilton**, com informações sobre o automobilismo e integração com a API pública da OpenF1.
+Projeto 1 de Programação Web Back-End: uma API JSON em **Flask + MySQL** sobre pilotos de
+Fórmula 1, com uma página de front-end simples que consome as rotas.
 
-Foi utilizada a API [OpenF1](https://www.openf1.org/) para a busca de pilotos por nome, permitindo que o usuário pesquise pilotos diretamente pela interface.
+## Estrutura (MVC)
 
-## 🛠️ Funcionalidades
+```
+├── app.py                  # cria o Flask, registra os Blueprints e entrega o front em /
+├── config.py               # dados de conexão com o banco (o MySQL do Docker)
+├── requirements.txt        # bibliotecas Python que o container instala
+├── docker-compose.yml      # sobe 2 containers: db (MySQL) e app (Flask)
+├── controllers/            # C: recebem a requisição HTTP, chamam o model e devolvem JSON
+│   ├── piloto_controller.py    (Blueprint /api/pilotos)
+│   └── usuario_controller.py   (Blueprint /api/usuarios)
+├── models/                 # M: classes que recebem o cursor e executam o SQL
+│   ├── conexao.py              (get_connection() com g + teardown)
+│   ├── piloto.py               (class Pilotos)
+│   ├── usuario.py              (class Usuarios)
+│   └── favorito.py             (class Favoritos)
+├── static/                 # V: front-end servido pelo Flask
+│   ├── index.html
+│   ├── css/style.css
+│   ├── javascript/script.js
+│   └── img/
+└── db/
+    ├── banco_f1.sql            (cria o banco f1_pilotos e insere os dados de teste)
+    └── README_BD.md            (explicação do modelo do banco)
+```
 
-### 1 — Busca de Pilotos via API
+## Como rodar
 
-Ao clicar em **Buscar**, o campo é validado exigindo no mínimo 3 caracteres. Caso contrário, é exibida a mensagem `"Digite pelo menos 3 caracteres"`. Se válido, a requisição é feita à API da OpenF1.
+Precisa só do **Docker Desktop** aberto. Na pasta do projeto:
 
+```bash
+docker compose up
+```
 
-## 🖥️ Tecnologias Utilizadas
-- :heavy_check_mark: HTML5
-- :heavy_check_mark: CSS3
-- :heavy_check_mark: JavaScript
-- :heavy_check_mark: [OpenF1 API](https://www.openf1.org/)
-- :heavy_check_mark: Git
+Espere aparecer `Running on http://0.0.0.0:5000` e abra **http://localhost:5000**.
 
-## Objetivos Futuros
-- Implementar a busca funcional de pilotos consumindo corretamente a API OpenF1
-- Adicionar feature de favoritos com os pilotos salvos pelo usuário
-- Melhorar responsividade para dispositivos móveis
+- Desligar: `Ctrl+C` (ou `docker compose down`)
+- Zerar o banco e voltar aos dados de teste: `docker compose down -v`
 
-## Autor
+## Rotas da API
+
+| Método | Rota | O que faz |
+|---|---|---|
+| GET | `/api/pilotos/destaques` | Os 3 pilotos da página inicial |
+| GET | `/api/pilotos/busca/<termo>?pagina=1` | Busca no nome, nacionalidade ou equipe, 4 por página |
+| GET | `/api/usuarios/` | Lista os usuários |
+| GET | `/api/usuarios/busca/<termo>` | Busca usuários pelo nome ou username |
+| GET | `/api/usuarios/<username>` | Perfil: dados do usuário + pilotos favoritos |
+| POST | `/api/usuarios/<username>/favoritos/<piloto_id>` | Favorita um piloto |
+| DELETE | `/api/usuarios/<username>/favoritos/<piloto_id>` | Remove dos favoritos |
+
+Exemplo da busca paginada (`/api/pilotos/busca/brasil?pagina=1`):
+
+```json
+{ "pagina": 1, "total_paginas": 2, "resultados": [ { "id": 2, "nome": "Ayrton Senna", ... } ] }
+```
+
+## Autores
+
 - Caio Estevão — [github.com/Caioestevao1000](https://github.com/Caioestevao1000)
 - Rafael Okano — [github.com/RafaelOkano](https://github.com/RafaelOkano)
-
